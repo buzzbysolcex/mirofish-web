@@ -66,7 +66,7 @@ export default function Navbar() {
           SolCex
         </a>
         <a
-          href="https://twitter.com/solcaborhood"
+          href="https://twitter.com/BuzzBySolCex"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-colors"

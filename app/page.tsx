@@ -389,7 +389,7 @@ export default function Home() {
         >
           <div className="flex justify-center gap-6 mb-4">
             <a
-              href="https://twitter.com/solcaborhood"
+              href="https://twitter.com/BuzzBySolCex"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm"
