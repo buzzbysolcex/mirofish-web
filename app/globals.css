@@ -57,3 +57,11 @@ body::before {
 .text-glow-cyan { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
 .text-glow-green { text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
 .text-glow-magenta { text-shadow: 0 0 10px rgba(255, 0, 255, 0.5); }
+
+/* Print styles */
+@media print {
+  body { background: white !important; color: black !important; }
+  body::before { display: none !important; }
+  .no-print { display: none !important; }
+  * { box-shadow: none !important; text-shadow: none !important; }
+}

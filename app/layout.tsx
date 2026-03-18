@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MiroFish — Simulation-Powered Token Listing Intelligence",
+  title: "MicroBuzz — Simulation-Powered Token Listing Intelligence",
   description: "20 AI agents simulate token listing outcomes across 4 market clusters. Expected Value engine decides LIST or REJECT. Built by Buzz BD Agent for SolCex Exchange.",
   openGraph: {
-    title: "MiroFish — Token Listing Simulation Engine",
+    title: "MicroBuzz — Token Listing Simulation Engine",
     description: "The world's first autonomous exchange listing simulation. 20 agents. 4 clusters. EV math.",
-    url: "https://mirofish.vercel.app",
-    siteName: "MiroFish",
+    url: "https://microbuzz.vercel.app",
+    siteName: "MicroBuzz",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     site: "@BuzzBySolCex",
-    title: "MiroFish — Token Listing Simulation",
+    title: "MicroBuzz — Token Listing Simulation",
     description: "20 agents. 4 clusters. EV = P(success) x reward - P(failure) x cost. LIST or REJECT.",
   },
 };

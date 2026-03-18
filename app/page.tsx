@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import PriceBar from "@/components/PriceBar";
+import SwarmHero from "@/components/SwarmHero";
 import { simulations } from "@/data/simulations";
 
 function getScoreColor(score: number): string {
@@ -8,9 +10,16 @@ function getScoreColor(score: number): string {
   return "#ffff00";
 }
 
-function getDecisionColor(decision: string): string {
-  if (decision === "LIST") return "#00ff88";
-  return "#ff4444";
+function getDecisionStyle(decision: string): { bg: string; color: string } {
+  if (decision === "LIST") return { bg: "rgba(0,255,136,0.15)", color: "#00ff88" };
+  if (decision === "MONITOR") return { bg: "rgba(255,255,0,0.15)", color: "#ffff00" };
+  return { bg: "rgba(255,68,68,0.15)", color: "#ff4444" };
+}
+
+function getSentimentColor(sentiment: string): string {
+  if (sentiment === "BULLISH") return "#00ff88";
+  if (sentiment === "BEARISH") return "#ff4444";
+  return "#ffff00";
 }
 
 const tokens = Object.values(simulations);
@@ -43,52 +52,107 @@ export default function Home() {
         }}
       />
 
+      {/* Live Price Bar - very top */}
+      <PriceBar />
+
       <Navbar />
 
       <main className="relative z-10 pt-16">
         {/* ===== HERO ===== */}
-        <section className="flex flex-col items-center justify-center text-center px-6 py-24">
-          <h1
-            className="text-6xl md:text-8xl font-bold tracking-widest mb-4"
+        <section className="relative flex flex-col items-center justify-center text-center px-6 py-24 overflow-hidden">
+          {/* Fish swarm animation layer */}
+          <div className="absolute inset-0 z-0">
+            <SwarmHero />
+          </div>
+          {/* Dark gradient overlay for text readability */}
+          <div
+            className="absolute inset-0 z-[1]"
             style={{
-              color: "#00ffff",
-              textShadow:
-                "0 0 20px rgba(0,255,255,0.6), 0 0 60px rgba(0,255,255,0.3), 0 0 100px rgba(0,255,255,0.1)",
+              background: "linear-gradient(180deg, rgba(10,10,15,0.7) 0%, rgba(10,10,15,0.5) 40%, rgba(10,10,15,0.7) 100%)",
             }}
-          >
-            MIROFISH
-          </h1>
-          <p
-            className="text-lg md:text-xl mb-3"
-            style={{ color: "#e0e0e0" }}
-          >
-            Simulation-Powered Token Listing Intelligence
-          </p>
-          <p className="text-sm mb-8" style={{ color: "#888" }}>
-            20 agents &nbsp;|&nbsp; 4 clusters &nbsp;|&nbsp; EV engine
-          </p>
-          <div className="flex gap-4 flex-wrap justify-center">
-            <Link
-              href="/report/EURC"
-              className="px-6 py-3 rounded-lg text-sm font-bold transition-all"
+          />
+          {/* Text overlay */}
+          <div className="relative z-[2] flex flex-col items-center">
+            {/* Version pill badge */}
+            <span
+              className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-6 tracking-wider"
               style={{
-                backgroundColor: "#00ffff",
-                color: "#0a0a0f",
-                boxShadow: "0 0 15px rgba(0,255,255,0.4)",
-              }}
-            >
-              View Reports
-            </Link>
-            <Link
-              href="/request"
-              className="px-6 py-3 rounded-lg text-sm font-bold border transition-all"
-              style={{
-                borderColor: "#00ffff",
+                border: "1px solid #00ffff",
                 color: "#00ffff",
+                backgroundColor: "rgba(0,255,255,0.08)",
               }}
             >
-              Request Simulation
-            </Link>
+              MicroBuzz v1.0
+            </span>
+            {/* Brand name */}
+            <h1 className="text-6xl md:text-8xl font-bold tracking-widest leading-none mb-2">
+              <span
+                style={{
+                  color: "#00ffff",
+                  textShadow:
+                    "0 0 20px rgba(0,255,255,0.6), 0 0 60px rgba(0,255,255,0.3), 0 0 100px rgba(0,255,255,0.1)",
+                }}
+              >
+                MICRO
+              </span>
+              <br />
+              <span
+                style={{
+                  color: "#ff0066",
+                  textShadow:
+                    "0 0 20px rgba(255,0,102,0.6), 0 0 60px rgba(255,0,102,0.3), 0 0 100px rgba(255,0,102,0.1)",
+                }}
+              >
+                BUZZ
+              </span>
+            </h1>
+            {/* Taglines */}
+            <p
+              className="text-lg md:text-xl font-bold mt-4 mb-1"
+              style={{ color: "#e0e0e0" }}
+            >
+              Swarm Simulation Engine
+            </p>
+            <p
+              className="text-base md:text-lg mb-4"
+              style={{ color: "#888" }}
+            >
+              for Token Listing Intelligence
+            </p>
+            <p className="text-sm mb-2" style={{ color: "#888" }}>
+              20 agents &middot; 4 clusters &middot; EV math
+            </p>
+            <p className="text-sm mb-8" style={{ color: "#666" }}>
+              Buzz scans. MicroBuzz predicts. SolCex lists.
+            </p>
+            {/* CTA buttons */}
+            <div className="flex gap-4 flex-wrap justify-center mb-6">
+              <Link
+                href="/report/EURC"
+                className="px-6 py-3 rounded-lg text-sm font-bold transition-all"
+                style={{
+                  backgroundColor: "#00ffff",
+                  color: "#0a0a0f",
+                  boxShadow: "0 0 15px rgba(0,255,255,0.4)",
+                }}
+              >
+                View Reports &rarr;
+              </Link>
+              <Link
+                href="/request"
+                className="px-6 py-3 rounded-lg text-sm font-bold border transition-all"
+                style={{
+                  borderColor: "#ff0066",
+                  color: "#ff0066",
+                }}
+              >
+                Request Simulation &rarr;
+              </Link>
+            </div>
+            {/* Attribution line */}
+            <p className="text-xs" style={{ color: "#555" }}>
+              Inspired by MiroFish architecture &middot; Powered by OASIS concepts
+            </p>
           </div>
         </section>
 
@@ -170,8 +234,8 @@ export default function Home() {
           >
             LIVE SIMULATION RESULTS
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div className="overflow-x-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+            <table className="w-full text-sm" style={{ minWidth: '800px' }}>
               <thead>
                 <tr
                   style={{
@@ -186,88 +250,265 @@ export default function Home() {
                   <th className="text-center py-3 px-3">Probability</th>
                   <th className="text-center py-3 px-3">EV</th>
                   <th className="text-center py-3 px-3">Decision</th>
+                  <th className="text-center py-3 px-3">Clusters</th>
                 </tr>
               </thead>
               <tbody>
-                {tokens.map((t) => (
-                  <tr
-                    key={t.ticker}
-                    style={{ borderBottom: "1px solid #1a1a2e" }}
-                  >
-                    <td className="py-3 px-3">
-                      <Link
-                        href={`/report/${t.ticker}`}
-                        className="font-bold"
-                        style={{ color: "#00ffff" }}
-                      >
-                        {t.ticker}
-                      </Link>
-                    </td>
-                    <td className="py-3 px-3" style={{ color: "#888" }}>
-                      {t.name}
-                    </td>
-                    <td className="text-center py-3 px-3">
-                      <span
-                        className="font-bold"
-                        style={{ color: getScoreColor(t.score) }}
-                      >
-                        {t.score}
-                      </span>
-                    </td>
-                    <td className="text-center py-3 px-3">
-                      <span
-                        className="text-xs px-2 py-1 rounded"
-                        style={{
-                          backgroundColor:
-                            t.verdict === "HOT"
-                              ? "rgba(255,0,255,0.15)"
-                              : t.verdict === "QUALIFIED"
-                                ? "rgba(0,255,255,0.15)"
-                                : "rgba(255,255,0,0.15)",
-                          color:
-                            t.verdict === "HOT"
-                              ? "#ff00ff"
-                              : t.verdict === "QUALIFIED"
-                                ? "#00ffff"
-                                : "#ffff00",
-                        }}
-                      >
-                        {t.verdict}
-                      </span>
-                    </td>
-                    <td
-                      className="text-center py-3 px-3"
-                      style={{ color: "#e0e0e0" }}
+                {tokens.map((t) => {
+                  const decStyle = getDecisionStyle(t.decision);
+                  const clusterSentiments = [
+                    t.clusters.degen.sentiment,
+                    t.clusters.whale.sentiment,
+                    t.clusters.institutional.sentiment,
+                    t.clusters.community.sentiment,
+                  ];
+                  return (
+                    <Link
+                      key={t.ticker}
+                      href={`/report/${t.ticker}`}
+                      className="contents group"
                     >
-                      {(t.probability * 100).toFixed(0)}%
-                    </td>
-                    <td
-                      className="text-center py-3 px-3 font-bold"
-                      style={{
-                        color: t.ev >= 0 ? "#00ff88" : "#ff4444",
-                      }}
-                    >
-                      {t.ev >= 0 ? "+" : ""}
-                      {t.ev}
-                    </td>
-                    <td className="text-center py-3 px-3">
-                      <span
-                        className="text-xs font-bold px-2 py-1 rounded"
-                        style={{
-                          backgroundColor:
-                            t.decision === "LIST"
-                              ? "rgba(0,255,136,0.15)"
-                              : "rgba(255,68,68,0.15)",
-                          color: getDecisionColor(t.decision),
-                        }}
+                      <tr
+                        className="cursor-pointer transition-all"
+                        style={{ borderBottom: "1px solid #1a1a2e" }}
                       >
-                        {t.decision}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                        <td className="py-3 px-3">
+                          <span className="font-bold" style={{ color: "#00ffff" }}>
+                            {t.ticker}
+                          </span>
+                        </td>
+                        <td className="py-3 px-3" style={{ color: "#888" }}>
+                          {t.name}
+                        </td>
+                        <td className="text-center py-3 px-3">
+                          <span
+                            className="font-bold"
+                            style={{ color: getScoreColor(t.score) }}
+                          >
+                            {t.score}
+                          </span>
+                        </td>
+                        <td className="text-center py-3 px-3">
+                          <span
+                            className="text-xs px-2 py-1 rounded"
+                            style={{
+                              backgroundColor:
+                                t.verdict === "HOT"
+                                  ? "rgba(255,0,255,0.15)"
+                                  : t.verdict === "QUALIFIED"
+                                    ? "rgba(0,255,255,0.15)"
+                                    : "rgba(255,255,0,0.15)",
+                              color:
+                                t.verdict === "HOT"
+                                  ? "#ff00ff"
+                                  : t.verdict === "QUALIFIED"
+                                    ? "#00ffff"
+                                    : "#ffff00",
+                            }}
+                          >
+                            {t.verdict}
+                          </span>
+                        </td>
+                        <td
+                          className="text-center py-3 px-3"
+                          style={{ color: "#e0e0e0" }}
+                        >
+                          {(t.probability * 100).toFixed(0)}%
+                        </td>
+                        <td
+                          className="text-center py-3 px-3 font-bold"
+                          style={{
+                            color: t.ev >= 0 ? "#00ff88" : "#ff4444",
+                          }}
+                        >
+                          {t.ev >= 0 ? "+" : ""}
+                          {t.ev}
+                        </td>
+                        <td className="text-center py-3 px-3">
+                          <span
+                            className="text-xs font-bold px-3 py-1 rounded-full"
+                            style={{
+                              backgroundColor: decStyle.bg,
+                              color: decStyle.color,
+                            }}
+                          >
+                            {t.decision}
+                          </span>
+                        </td>
+                        <td className="text-center py-3 px-3">
+                          <span className="inline-flex items-center gap-1">
+                            {clusterSentiments.map((s, i) => (
+                              <span
+                                key={i}
+                                title={['Degen', 'Whale', 'Institutional', 'Community'][i] + ': ' + s}
+                                style={{
+                                  display: 'inline-block',
+                                  width: '5px',
+                                  height: '5px',
+                                  borderRadius: '50%',
+                                  backgroundColor: getSentimentColor(s),
+                                }}
+                              />
+                            ))}
+                          </span>
+                        </td>
+                      </tr>
+                    </Link>
+                  );
+                })}
               </tbody>
             </table>
+          </div>
+
+          {/* Row hover styles */}
+          <style>{`
+            .group:hover tr {
+              border-left: 2px solid #00ffff !important;
+              filter: brightness(1.15);
+              background-color: rgba(0,255,255,0.03);
+            }
+          `}</style>
+        </section>
+
+        {/* ===== ECOSYSTEM ===== */}
+        <section className="px-6 py-16 max-w-6xl mx-auto">
+          <h2
+            className="text-2xl font-bold text-center mb-10 tracking-wider"
+            style={{ color: "#00ffff" }}
+          >
+            ECOSYSTEM
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* SolCex Card */}
+            <div
+              className="rounded-lg p-6 relative overflow-hidden"
+              style={{
+                backgroundColor: "#12121a",
+                border: "1px solid #1a1a2e",
+                borderLeft: "3px solid #7c3aed",
+              }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span style={{ fontSize: '20px' }}>&#x1F4B1;</span>
+                <h3 className="text-lg font-bold" style={{ color: "#e0e0e0" }}>
+                  SolCex Exchange
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "#888" }}>
+                Trade tokens that pass MicroBuzz simulation
+              </p>
+              <div className="flex gap-4 mb-5">
+                <div
+                  className="text-xs px-3 py-2 rounded"
+                  style={{
+                    backgroundColor: "rgba(124,58,237,0.1)",
+                    border: "1px solid rgba(124,58,237,0.2)",
+                  }}
+                >
+                  <span style={{ color: "#888" }}>BTC/USDT</span>{" "}
+                  <span className="font-bold" style={{ color: "#00ff88" }}>$87,245</span>
+                </div>
+                <div
+                  className="text-xs px-3 py-2 rounded"
+                  style={{
+                    backgroundColor: "rgba(124,58,237,0.1)",
+                    border: "1px solid rgba(124,58,237,0.2)",
+                  }}
+                >
+                  <span style={{ color: "#888" }}>SOL/USDT</span>{" "}
+                  <span className="font-bold" style={{ color: "#00ff88" }}>$134.20</span>
+                </div>
+              </div>
+              <a
+                href="https://solcex.cc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-5 py-2 rounded text-sm font-bold transition-all"
+                style={{
+                  backgroundColor: "#7c3aed",
+                  color: "#ffffff",
+                  boxShadow: "0 0 12px rgba(124,58,237,0.4)",
+                }}
+              >
+                Trade Now &rarr;
+              </a>
+              <div
+                className="absolute bottom-0 left-0 right-0 h-[2px]"
+                style={{
+                  background: "linear-gradient(90deg, #7c3aed, transparent)",
+                }}
+              />
+            </div>
+
+            {/* Buzz Alpha Card */}
+            <div
+              className="rounded-lg p-6 relative overflow-hidden"
+              style={{
+                backgroundColor: "#12121a",
+                border: "1px solid #1a1a2e",
+                borderLeft: "3px solid #00ffff",
+              }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span style={{ fontSize: '20px' }}>&#x1F41D;</span>
+                <h3 className="text-lg font-bold" style={{ color: "#e0e0e0" }}>
+                  Buzz Alpha Mobile
+                </h3>
+              </div>
+              <p className="text-sm mb-4" style={{ color: "#888" }}>
+                Monitor pipeline, agents &amp; simulations on mobile
+              </p>
+              <div className="flex gap-3 mb-5 flex-wrap">
+                <div
+                  className="text-xs px-3 py-2 rounded"
+                  style={{
+                    backgroundColor: "rgba(0,255,255,0.08)",
+                    border: "1px solid rgba(0,255,255,0.2)",
+                    color: "#00ffff",
+                  }}
+                >
+                  Pipeline: <span className="font-bold">7 tokens</span>
+                </div>
+                <div
+                  className="text-xs px-3 py-2 rounded"
+                  style={{
+                    backgroundColor: "rgba(0,255,255,0.08)",
+                    border: "1px solid rgba(0,255,255,0.2)",
+                    color: "#00ffff",
+                  }}
+                >
+                  Agents: <span className="font-bold">10/10</span>
+                </div>
+                <div
+                  className="text-xs px-3 py-2 rounded"
+                  style={{
+                    backgroundColor: "rgba(0,255,136,0.08)",
+                    border: "1px solid rgba(0,255,136,0.2)",
+                    color: "#00ff88",
+                  }}
+                >
+                  Sentinel: <span className="font-bold">GREEN</span>
+                </div>
+              </div>
+              <button
+                disabled
+                className="inline-block px-5 py-2 rounded text-sm font-bold cursor-not-allowed"
+                style={{
+                  backgroundColor: "rgba(0,255,255,0.1)",
+                  color: "#555",
+                  border: "1px solid #1a1a2e",
+                }}
+              >
+                Coming to App Store
+              </button>
+              <div
+                className="absolute bottom-0 left-0 right-0 h-[2px]"
+                style={{
+                  background: "linear-gradient(90deg, #00ffff, transparent)",
+                  boxShadow: "0 0 8px rgba(0,255,255,0.3)",
+                }}
+              />
+            </div>
           </div>
         </section>
 
@@ -303,7 +544,7 @@ export default function Home() {
               what autonomous BD agents could look like in crypto.
             </p>
             <p className="text-sm leading-relaxed" style={{ color: "#888" }}>
-              MiroFish is the intelligence layer. Buzz is the execution engine.
+              MicroBuzz is the intelligence layer. Buzz is the execution engine.
               Together they form a fully autonomous Business Development pipeline
               for token listing &mdash; from discovery to decision.
             </p>
@@ -408,7 +649,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-xs" style={{ color: "#888" }}>
-            Powered by MiroFish Stage 1 | Buzz BD Agent v7.5.5
+            Powered by MicroBuzz Stage 1 | Buzz BD Agent v7.5.5
           </p>
         </footer>
       </main>

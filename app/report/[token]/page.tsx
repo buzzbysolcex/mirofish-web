@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { simulations } from "@/data/simulations";
 import type { SimulationResult, ClusterData } from "@/data/simulations";
+import ShareButton from "@/components/ShareButton";
+import MiniFish from "@/components/MiniFish";
 
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
   return {
-    title: `MiroFish Report | ${token.toUpperCase()}`,
+    title: `MicroBuzz Report | ${token.toUpperCase()}`,
     description: `Simulation report for ${token.toUpperCase()} — 20 agents, 4 clusters, EV analysis`,
   };
 }
@@ -99,7 +101,7 @@ export default async function ReportPage({ params }: { params: Promise<{ token: 
           <h1 className="text-5xl font-bold text-[#ff00ff] mb-4">404</h1>
           <p className="text-xl text-gray-400 mb-2">Token not yet simulated</p>
           <p className="text-gray-500 mb-8 text-sm">
-            <span className="text-[#00ffff]">${ticker}</span> has not been processed by the MiroFish pipeline.
+            <span className="text-[#00ffff]">${ticker}</span> has not been processed by the MicroBuzz pipeline.
           </p>
           <Link
             href="/request"
@@ -155,17 +157,21 @@ export default async function ReportPage({ params }: { params: Promise<{ token: 
       `}</style>
 
       <div className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="inline-block mb-6 text-gray-500 hover:text-[#00ffff] text-sm transition-colors"
-        >
-          &larr; Back to all reports
-        </Link>
+        {/* Top Bar: Back Link + Share */}
+        <div className="flex items-center justify-between mb-6">
+          <Link
+            href="/#results"
+            className="text-gray-500 hover:text-[#00ffff] text-sm transition-colors"
+          >
+            &larr; Back to all reports
+          </Link>
+          <ShareButton />
+        </div>
 
         {/* Header */}
         <header className="scanline-container bg-[#12121a] border border-[#1a1a2e] rounded-lg p-6 mb-6 text-center">
-          <p className="text-xs tracking-[0.3em] text-gray-500 uppercase mb-2">
+          <MiniFish />
+          <p className="text-xs tracking-[0.3em] text-gray-500 uppercase mb-2 mt-2">
             Buzz BD Agent v7.5.5
           </p>
           <h1 className="text-2xl sm:text-3xl font-bold text-[#00ffff] mb-3">
@@ -266,7 +272,7 @@ export default async function ReportPage({ params }: { params: Promise<{ token: 
         {/* Footer */}
         <footer className="bg-[#12121a] border border-[#1a1a2e] rounded-lg p-6 text-center">
           <p className="text-xs text-gray-500 mb-2">
-            Powered by MiroFish Stage 1 | Buzz BD Agent v7.5.5 | 23 Intel Sources
+            Powered by MicroBuzz Stage 1 | Buzz BD Agent v7.5.5 | 23 Intel Sources
           </p>
           <p className="text-xs text-gray-500 mb-4">
             Simulated at: {sim.simulatedAt}

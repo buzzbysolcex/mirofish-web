@@ -21,7 +21,7 @@ export default function Navbar() {
           textShadow: "0 0 10px rgba(0,255,255,0.5)",
         }}
       >
-        MIROFISH
+        🐟 MICROBUZZ
       </Link>
       <div className="flex items-center gap-6 text-sm">
         <Link
