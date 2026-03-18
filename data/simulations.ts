@@ -185,6 +185,33 @@ export const simulations: Record<string, SimulationResult> = {
     signals: "none positive",
     simulatedAt: "2026-03-18T03:20:00Z",
   },
+  HIPPO: {
+    ticker: "HIPPO",
+    name: "Pygmy Hippo",
+    chain: "SOL",
+    score: 90,
+    verdict: "HOT",
+    probability: 0.88,
+    confidence: 0.87,
+    ev: 13200,
+    decision: "LIST",
+    agentsCount: 20,
+    clusters: {
+      degen: { bullish: 5, neutral: 0, bearish: 0, sentiment: "BULLISH" },
+      whale: { bullish: 4, neutral: 1, bearish: 0, sentiment: "BULLISH" },
+      institutional: {
+        bullish: 4,
+        neutral: 1,
+        bearish: 0,
+        sentiment: "BULLISH",
+      },
+      community: { bullish: 5, neutral: 0, bearish: 0, sentiment: "BULLISH" },
+    },
+    risks: "none identified — clean contract, massive liquidity",
+    signals:
+      "$424M mcap; $17M liquidity; multi-DEX (Orca+Raydium+FluxBeam); non-pump.fun; 18/20 agents BUY",
+    simulatedAt: "2026-03-19T02:30:00Z",
+  },
   MUSK: {
     ticker: "MUSK",
     name: "Musk Coin",
