@@ -74,18 +74,33 @@ export default function SwarmHero() {
                 }}
               >
                 <svg
-                  width={24 * f.scale}
-                  height={12 * f.scale}
-                  viewBox="0 0 24 12"
-                  fill={f.color}
+                  width={32 * f.scale}
+                  height={16 * f.scale}
+                  viewBox="0 0 32 16"
                   style={{
-                    filter: `drop-shadow(0 0 6px ${f.color})`,
+                    filter: `drop-shadow(0 0 8px ${f.color})`,
                     transform: f.direction === 'rtl' ? 'scaleX(-1)' : undefined,
                   }}
                 >
-                  <path d="M0,6 Q4,0 12,1 Q18,2 22,6 Q18,10 12,11 Q4,12 0,6 Z" />
-                  <path d="M22,6 L24,4 L24,8 Z" />
-                  <circle cx="6" cy="5" r="1" fill="#0a0a0f" />
+                  {/* Angular mechanical body */}
+                  <polygon points="2,8 8,2 22,3 28,8 22,13 8,14" fill={f.color} fillOpacity="0.15" stroke={f.color} strokeWidth="0.6" />
+                  {/* Inner hull plate */}
+                  <polygon points="6,8 10,4 20,5 24,8 20,11 10,12" fill={f.color} fillOpacity="0.25" stroke={f.color} strokeWidth="0.3" />
+                  {/* Circuit lines along body */}
+                  <line x1="8" y1="8" x2="20" y2="8" stroke={f.color} strokeWidth="0.4" strokeOpacity="0.6" />
+                  <line x1="12" y1="5" x2="12" y2="11" stroke={f.color} strokeWidth="0.3" strokeOpacity="0.4" />
+                  <line x1="17" y1="5" x2="17" y2="11" stroke={f.color} strokeWidth="0.3" strokeOpacity="0.4" />
+                  {/* Angular tail fin */}
+                  <polygon points="26,8 30,4 32,6 30,8 32,10 30,12" fill={f.color} fillOpacity="0.3" stroke={f.color} strokeWidth="0.5" />
+                  {/* Dorsal antenna */}
+                  <line x1="14" y1="4" x2="14" y2="1" stroke={f.color} strokeWidth="0.4" strokeOpacity="0.5" />
+                  <circle cx="14" cy="1" r="0.6" fill={f.color} fillOpacity="0.8" />
+                  {/* Glowing eye */}
+                  <circle cx="6" cy="7.5" r="1.4" fill="#0a0a0f" stroke={f.color} strokeWidth="0.5" />
+                  <circle cx="6" cy="7.5" r="0.7" fill={f.color} />
+                  {/* Pectoral fin strut */}
+                  <line x1="10" y1="11" x2="8" y2="14" stroke={f.color} strokeWidth="0.4" strokeOpacity="0.4" />
+                  <line x1="14" y1="11" x2="13" y2="14" stroke={f.color} strokeWidth="0.3" strokeOpacity="0.3" />
                 </svg>
               </div>
             </div>

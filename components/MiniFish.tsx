@@ -45,29 +45,58 @@ export default function MiniFish() {
 
     function drawFish(ctx: CanvasRenderingContext2D, fish: Fish) {
       const { x, y, size, color } = fish;
+      const s = size;
       ctx.save();
+
+      // Angular mechanical body — outer hull
+      ctx.strokeStyle = color;
       ctx.fillStyle = color;
-      ctx.globalAlpha = 0.7;
-
-      // Body (ellipse)
+      ctx.lineWidth = 0.5;
+      ctx.globalAlpha = 0.3;
       ctx.beginPath();
-      ctx.ellipse(x, y, size * 1.5, size, 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Tail
-      ctx.beginPath();
-      ctx.moveTo(x + size * 1.5, y);
-      ctx.lineTo(x + size * 2.5, y - size * 0.8);
-      ctx.lineTo(x + size * 2.5, y + size * 0.8);
+      ctx.moveTo(x - s * 1.8, y);
+      ctx.lineTo(x - s, y - s);
+      ctx.lineTo(x + s * 1.2, y - s * 0.7);
+      ctx.lineTo(x + s * 2, y);
+      ctx.lineTo(x + s * 1.2, y + s * 0.7);
+      ctx.lineTo(x - s, y + s);
       ctx.closePath();
       ctx.fill();
+      ctx.globalAlpha = 0.7;
+      ctx.stroke();
 
-      // Eye
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = '#ffffff';
+      // Circuit line through body
+      ctx.globalAlpha = 0.5;
+      ctx.lineWidth = 0.3;
       ctx.beginPath();
-      ctx.arc(x - size * 0.6, y - size * 0.2, size * 0.25, 0, Math.PI * 2);
+      ctx.moveTo(x - s, y);
+      ctx.lineTo(x + s * 1.2, y);
+      ctx.stroke();
+
+      // Tail fin — angular struts
+      ctx.globalAlpha = 0.5;
+      ctx.lineWidth = 0.4;
+      ctx.beginPath();
+      ctx.moveTo(x + s * 1.8, y);
+      ctx.lineTo(x + s * 2.6, y - s * 0.7);
+      ctx.moveTo(x + s * 1.8, y);
+      ctx.lineTo(x + s * 2.6, y + s * 0.7);
+      ctx.stroke();
+
+      // Glowing eye
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x - s * 0.8, y - s * 0.15, s * 0.3, 0, Math.PI * 2);
       ctx.fill();
+
+      // Eye ring
+      ctx.globalAlpha = 0.6;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 0.3;
+      ctx.beginPath();
+      ctx.arc(x - s * 0.8, y - s * 0.15, s * 0.5, 0, Math.PI * 2);
+      ctx.stroke();
 
       ctx.restore();
     }
