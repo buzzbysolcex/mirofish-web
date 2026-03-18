@@ -2,9 +2,9 @@
 
 // Cluster configs — whale biggest, community smallest
 const fishGroups = [
-  { color: '#ff0066', light: '#ff4d94', dark: '#99003d', label: 'degen', baseSize: 1.1 },
+  { color: '#ff00ff', light: '#ff66ff', dark: '#990099', label: 'degen', baseSize: 1.1 },
   { color: '#00ff88', light: '#66ffb3', dark: '#009952', label: 'whale', baseSize: 1.5 },
-  { color: '#00ffff', light: '#66ffff', dark: '#009999', label: 'institutional', baseSize: 1.2 },
+  { color: '#ff00ff', light: '#ff66ff', dark: '#990099', label: 'institutional', baseSize: 1.2 },
   { color: '#ffff00', light: '#ffff66', dark: '#999900', label: 'community', baseSize: 0.85 },
 ];
 

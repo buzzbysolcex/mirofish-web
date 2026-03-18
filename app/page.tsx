@@ -98,9 +98,9 @@ export default function Home() {
               <br />
               <span
                 style={{
-                  color: "#ff0066",
+                  color: "#ff00ff",
                   textShadow:
-                    "0 0 20px rgba(255,0,102,0.6), 0 0 60px rgba(255,0,102,0.3), 0 0 100px rgba(255,0,102,0.1)",
+                    "0 0 20px rgba(255,0,255,0.6), 0 0 60px rgba(255,0,255,0.3), 0 0 100px rgba(255,0,255,0.1)",
                 }}
               >
                 BUZZ
