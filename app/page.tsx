@@ -649,7 +649,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-xs" style={{ color: "#888" }}>
-            Powered by MicroBuzz Stage 1 | Buzz BD Agent v7.5.5
+            Powered by MiroFish Architecture &middot; OASIS Concepts &middot; Financial Datasets MCP | Buzz BD Agent v7.6.0
           </p>
         </footer>
       </main>

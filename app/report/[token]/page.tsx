@@ -3,6 +3,9 @@ import { simulations } from "@/data/simulations";
 import type { SimulationResult, ClusterData } from "@/data/simulations";
 import ShareButton from "@/components/ShareButton";
 import MiniFish from "@/components/MiniFish";
+import SimulationResults from "@/components/SimulationResults";
+import PersonaDebateView from "@/components/PersonaDebateView";
+import SimulationHistory from "@/components/SimulationHistory";
 
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
@@ -172,7 +175,7 @@ export default async function ReportPage({ params }: { params: Promise<{ token: 
         <header className="scanline-container bg-[#12121a] border border-[#1a1a2e] rounded-lg p-6 mb-6 text-center">
           <MiniFish />
           <p className="text-xs tracking-[0.3em] text-gray-500 uppercase mb-2 mt-2">
-            Buzz BD Agent v7.5.5
+            Buzz BD Agent v7.6.0
           </p>
           <h1 className="text-2xl sm:text-3xl font-bold text-[#00ffff] mb-3">
             BUZZ SIMULATION REPORT
@@ -244,6 +247,12 @@ export default async function ReportPage({ params }: { params: Promise<{ token: 
           </div>
         </section>
 
+        {/* Simulation Results Breakdown */}
+        <SimulationResults simulation={sim} />
+
+        {/* Persona Debate View */}
+        <PersonaDebateView simulation={sim} />
+
         {/* Decision Banner */}
         <section
           className={`rounded-lg border-2 p-6 mb-6 text-center ${decisionStyle.bg} ${decisionStyle.border}`}
@@ -269,10 +278,13 @@ export default async function ReportPage({ params }: { params: Promise<{ token: 
           </div>
         </section>
 
+        {/* Simulation History */}
+        <SimulationHistory simulations={Object.values(simulations)} />
+
         {/* Footer */}
         <footer className="bg-[#12121a] border border-[#1a1a2e] rounded-lg p-6 text-center">
           <p className="text-xs text-gray-500 mb-2">
-            Powered by MicroBuzz Stage 1 | Buzz BD Agent v7.5.5 | 23 Intel Sources
+            Powered by MiroFish Architecture &middot; OASIS Concepts &middot; Financial Datasets MCP | Buzz BD Agent v7.6.0 | 24 Intel Sources
           </p>
           <p className="text-xs text-gray-500 mb-4">
             Simulated at: {sim.simulatedAt}
