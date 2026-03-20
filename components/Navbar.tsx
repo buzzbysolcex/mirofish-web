@@ -23,32 +23,24 @@ export default function Navbar() {
       >
         🐟 MICROBUZZ
       </Link>
-      <div className="flex items-center gap-6 text-sm">
-        <Link
-          href="/report/EURC"
-          className="transition-colors"
-          style={{ color: "#e0e0e0" }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "#00ffff")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "#e0e0e0")
-          }
-        >
-          Reports
+      <div className="flex items-center gap-4 md:gap-6 text-sm">
+        <Link href="/simulate" className="transition-colors"
+          style={{ color: "#ff00ff" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#00ffff")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#ff00ff")}>
+          Terminal
         </Link>
-        <Link
-          href="/request"
-          className="transition-colors"
+        <Link href="/dashboard" className="transition-colors"
           style={{ color: "#e0e0e0" }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "#00ffff")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "#e0e0e0")
-          }
-        >
-          Request
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#00ffff")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#e0e0e0")}>
+          Dashboard
+        </Link>
+        <Link href="/check" className="transition-colors"
+          style={{ color: "#e0e0e0" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#00ffff")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#e0e0e0")}>
+          Check
         </Link>
         <a
           href="https://solcex.com"
