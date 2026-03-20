@@ -128,7 +128,7 @@ export default function Home() {
             {/* CTA buttons */}
             <div className="flex gap-4 flex-wrap justify-center mb-6">
               <Link
-                href="/report/EURC"
+                href="/dashboard"
                 className="px-6 py-3 rounded-lg text-sm font-bold transition-all"
                 style={{
                   backgroundColor: "#00ffff",
@@ -136,7 +136,17 @@ export default function Home() {
                   boxShadow: "0 0 15px rgba(0,255,255,0.4)",
                 }}
               >
-                View Reports &rarr;
+                Pipeline Dashboard &rarr;
+              </Link>
+              <Link
+                href="/report/PIPPIN2"
+                className="px-6 py-3 rounded-lg text-sm font-bold border transition-all"
+                style={{
+                  borderColor: "#ff00ff",
+                  color: "#ff00ff",
+                }}
+              >
+                Top Prospect &rarr;
               </Link>
               <Link
                 href="/request"
@@ -562,13 +572,13 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { value: "10", label: "AI Agents" },
-              { value: "23", label: "Intel Sources" },
-              { value: "131", label: "API Endpoints" },
-              { value: "47", label: "DB Tables" },
-              { value: "28", label: "Cron Jobs" },
-              { value: "2", label: "WebSocket Feeds" },
+              { value: "24", label: "Intel Sources" },
+              { value: "122", label: "API Endpoints" },
+              { value: "51", label: "DB Tables" },
+              { value: "41", label: "Cron Jobs" },
+              { value: "25", label: "Tokens Simulated" },
               { value: "ERC-8004", label: "On 6 Chains" },
-              { value: "$4.09/mo", label: "Infrastructure" },
+              { value: "$0/sim", label: "Simulation Cost" },
             ].map((item) => (
               <div
                 key={item.label}
