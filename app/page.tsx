@@ -4,6 +4,7 @@ import PriceBar from "@/components/PriceBar";
 import SwarmHero from "@/components/SwarmHero";
 import { simulations } from "@/data/simulations";
 import BuzzLiveActivity from "@/components/BuzzLiveActivity";
+import LivePriceTicker from "@/components/LivePriceTicker";
 
 function getScoreColor(score: number): string {
   if (score >= 85) return "#ff00ff";
@@ -166,6 +167,9 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        {/* ===== LIVE PRICE TICKER ===== */}
+        <LivePriceTicker />
 
         {/* ===== BUZZ LIVE ACTIVITY ===== */}
         <BuzzLiveActivity />

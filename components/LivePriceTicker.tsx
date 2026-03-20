@@ -126,8 +126,8 @@ export default function LivePriceTicker() {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden"
-      style={{ background: '#080810', borderBottom: '1px solid #1a1a2e', height: '32px' }}>
+    <div className="w-full overflow-hidden"
+      style={{ background: '#080810', borderBottom: '1px solid #1a1a2e', borderTop: '1px solid #1a1a2e', height: '36px' }}>
       <div className="flex items-center justify-center gap-4 h-full px-4 text-xs"
         style={{ fontFamily: "'JetBrains Mono', monospace", whiteSpace: 'nowrap' }}>
         {Object.entries(prices).map(([instId, data]) => {

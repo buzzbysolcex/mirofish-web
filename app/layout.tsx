@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import LivePriceTicker from "@/components/LivePriceTicker";
+// LivePriceTicker rendered on homepage only (not layout — conflicts with Navbar z-index)
 
 export const metadata: Metadata = {
   title: "MicroBuzz — Simulation-Powered Token Listing Intelligence",
@@ -32,8 +32,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased min-h-screen relative" style={{ fontFamily: "'JetBrains Mono', monospace", paddingTop: '32px' }}>
-        <LivePriceTicker />
+      <body className="antialiased min-h-screen relative" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         {children}
       </body>
     </html>
