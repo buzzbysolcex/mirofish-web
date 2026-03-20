@@ -166,6 +166,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===== LISTING READINESS CHECKER ===== */}
+        <section className="px-6 py-16 max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-3" style={{ color: '#00ffff' }}>CHECK YOUR LISTING READINESS</h2>
+          <p className="text-sm mb-6" style={{ color: '#888' }}>Paste your contract address. See what exchanges see.</p>
+          <Link href="/check" className="inline-block px-8 py-3 rounded-lg text-sm font-bold"
+            style={{ background: '#00ffff', color: '#0a0a0f', boxShadow: '0 0 15px rgba(0,255,255,0.4)' }}>
+            Check Now &rarr;
+          </Link>
+        </section>
+
         {/* ===== HOW IT WORKS ===== */}
         <section className="px-6 py-16 max-w-6xl mx-auto">
           <h2
