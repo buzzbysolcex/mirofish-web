@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import PriceBar from "@/components/PriceBar";
 import SwarmHero from "@/components/SwarmHero";
 import { simulations } from "@/data/simulations";
+import BuzzLiveActivity from "@/components/BuzzLiveActivity";
 
 function getScoreColor(score: number): string {
   if (score >= 85) return "#ff00ff";
@@ -165,6 +166,9 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        {/* ===== BUZZ LIVE ACTIVITY ===== */}
+        <BuzzLiveActivity />
 
         {/* ===== LISTING READINESS CHECKER ===== */}
         <section className="px-6 py-16 max-w-4xl mx-auto text-center">

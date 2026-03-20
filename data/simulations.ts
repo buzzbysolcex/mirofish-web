@@ -9,6 +9,7 @@ export interface SimulationResult {
   ticker: string;
   name: string;
   chain: string;
+  address?: string;
   score: number;
   verdict: string;
   probability: number;
@@ -37,7 +38,7 @@ function bullishCluster(b = 5, n = 0, bear = 0): ClusterData {
 
 export const simulations: Record<string, SimulationResult> = {
   PIPPIN2: {
-    ticker: "PIPPIN2", name: "Pippin v2", chain: "SOL", score: 85, verdict: "HOT",
+    ticker: "PIPPIN2", name: "Pippin v2", chain: "SOL", address: "8WwcNqdZjCY5Pt7AkhupAFknV2txca9sq6YBkGzLbvdt", score: 85, verdict: "HOT",
     probability: 1.0, confidence: 1.0, ev: 1000, decision: "LIST", agentsCount: 20,
     clusters: { degen: bullishCluster(5,0,0), whale: bullishCluster(5,0,0), institutional: bullishCluster(5,0,0), community: bullishCluster(5,0,0) },
     risks: "No risks identified — perfect consensus across all clusters",
@@ -45,7 +46,7 @@ export const simulations: Record<string, SimulationResult> = {
     simulatedAt: "2026-03-20T02:30:00Z",
   },
   PEACE: {
-    ticker: "PEACE", name: "Peace", chain: "SOL", score: 88, verdict: "HOT",
+    ticker: "PEACE", name: "Peace", chain: "SOL", address: "atVjZ7uM8sVrLFi5Xe1JiLGW6mW9pvQdTCWzhNFpump", score: 88, verdict: "HOT",
     probability: 0.891, confidence: 0.891, ev: 836, decision: "LIST", agentsCount: 20,
     clusters: { degen: bullishCluster(5,0,0), whale: bullishCluster(5,0,0), institutional: bullishCluster(4,1,0), community: bullishCluster(5,0,0) },
     risks: "Institutional cluster slightly cautious on compliance",
@@ -69,7 +70,7 @@ export const simulations: Record<string, SimulationResult> = {
     simulatedAt: "2026-03-20T02:32:00Z",
   },
   CHIBI: {
-    ticker: "CHIBI", name: "Chibi", chain: "SOL", score: 91, verdict: "HOT",
+    ticker: "CHIBI", name: "Chibi", chain: "SOL", address: "2TpMjYXnrgxoeVCq2i6EAR8vNWqe5MNvHCz3bENNpump", score: 91, verdict: "HOT",
     probability: 0.8, confidence: 0.8, ev: 700, decision: "LIST", agentsCount: 20,
     clusters: { degen: bullishCluster(5,0,0), whale: bullishCluster(5,0,0), institutional: bullishCluster(3,2,0), community: bullishCluster(5,0,0) },
     risks: "Institutional split on compliance review",
@@ -77,7 +78,7 @@ export const simulations: Record<string, SimulationResult> = {
     simulatedAt: "2026-03-20T02:22:00Z",
   },
   EURC: {
-    ticker: "EURC", name: "Euro Coin", chain: "SOL", score: 90, verdict: "HOT",
+    ticker: "EURC", name: "Euro Coin", chain: "SOL", address: "HzwqbKZw8HxMN6bF2yFZNrht3c2iXXzpKcFu7uBEDKtr", score: 90, verdict: "HOT",
     probability: 0.783, confidence: 0.783, ev: 674, decision: "LIST", agentsCount: 20,
     clusters: { degen: bullishCluster(3,2,0), whale: bullishCluster(5,0,0), institutional: bullishCluster(5,0,0), community: bullishCluster(3,2,0) },
     risks: "Degen + community mixed (stablecoin dynamics — less speculative upside)",
@@ -181,7 +182,7 @@ export const simulations: Record<string, SimulationResult> = {
     simulatedAt: "2026-03-20T02:26:00Z",
   },
   ALIENS: {
-    ticker: "ALIENS", name: "Aliens", chain: "SOL", score: 100, verdict: "HOT",
+    ticker: "ALIENS", name: "Aliens", chain: "SOL", address: "F5tfztTnE4sYsMhZT5KrFpWvHmYSfJZoRjCuxKPbpump", score: 100, verdict: "HOT",
     probability: 0.705, confidence: 0.705, ev: 558, decision: "LIST", agentsCount: 20,
     clusters: { degen: bullishCluster(5,0,0), whale: bullishCluster(3,2,0), institutional: bullishCluster(3,2,0), community: bullishCluster(5,0,0) },
     risks: "Whale + institutional mixed; needs more institutional due diligence",
@@ -222,7 +223,7 @@ export const simulations: Record<string, SimulationResult> = {
     simulatedAt: "2026-03-20T02:30:00Z",
   },
   TRUMP: {
-    ticker: "TRUMP", name: "Official Trump", chain: "SOL", score: 95, verdict: "HOT",
+    ticker: "TRUMP", name: "Official Trump", chain: "SOL", address: "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN", score: 95, verdict: "HOT",
     probability: 0.455, confidence: 0.455, ev: 183, decision: "MONITOR", agentsCount: 20,
     clusters: { degen: bullishCluster(4,1,0), whale: bullishCluster(2,3,0), institutional: bullishCluster(1,3,1), community: bullishCluster(3,2,0) },
     risks: "Institutional bearish on regulatory risk; whale cluster cautious; low confidence despite high score",

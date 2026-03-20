@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { sortedByConfidence, stats } from "@/data/simulations";
 import Navbar from "@/components/Navbar";
+// ContractAddress used in client components (check page)
 
 export const metadata = {
   title: "MicroBuzz — Pipeline Dashboard",
@@ -89,8 +90,20 @@ export default function DashboardPage() {
                       <tr className="cursor-pointer transition-all hover:brightness-125" style={{ borderBottom: "1px solid #1a1a2e" }}>
                         <td className="py-3 px-2" style={{ color: "#555" }}>{i + 1}</td>
                         <td className="py-3 px-2">
-                          <span className="font-bold" style={{ color: "#00ffff" }}>{sim.ticker}</span>
-                          <span className="text-xs ml-2" style={{ color: "#555" }}>{sim.name}</span>
+                          <div>
+                            <span className="font-bold" style={{ color: "#00ffff" }}>{sim.ticker}</span>
+                            <span className="text-xs ml-2" style={{ color: "#555" }}>{sim.name}</span>
+                          </div>
+                          {sim.address && (
+                            <div className="mt-1">
+                              <span className="text-xs" style={{ color: '#555' }}>
+                                {sim.address.slice(0, 6)}...{sim.address.slice(-4)}
+                              </span>
+                              <a href={`https://dexscreener.com/${sim.chain.toLowerCase() === 'sol' ? 'solana' : sim.chain.toLowerCase()}/${sim.address}`}
+                                target="_blank" rel="noopener noreferrer" className="ml-1 text-xs"
+                                style={{ color: '#555' }}>🔗</a>
+                            </div>
+                          )}
                         </td>
                         <td className="text-center py-3 px-2">
                           <span className="font-bold" style={{ color: getScoreColor(sim.score) }}>{sim.score}</span>
