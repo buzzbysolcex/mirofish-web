@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import ReadinessBar from '@/components/ReadinessBar';
 import { simulations, type SimulationResult } from '@/data/simulations';
+import ContractAddress from '@/components/ContractAddress';
 
 // Demo contract address -> ticker mapping
 const addressToTicker: Record<string, string> = {
@@ -105,9 +106,9 @@ export default function CheckResultPage({ params }: { params: Promise<{ address:
             <p className="text-sm mb-2" style={{ color: '#888' }}>
               This contract address has not been simulated by MicroBuzz yet.
             </p>
-            <p className="text-xs mb-8" style={{ color: '#555' }}>
-              Address: {decodedAddress.slice(0, 12)}...{decodedAddress.slice(-8)}
-            </p>
+            <div className="mb-8 max-w-lg mx-auto">
+              <ContractAddress address={decodedAddress} chain="solana" />
+            </div>
             <div className="flex justify-center gap-3">
               <Link href="/request" className="px-6 py-3 rounded-lg text-sm font-bold"
                 style={{ background: '#ff00ff', color: '#0a0a0f' }}>
@@ -138,10 +139,8 @@ export default function CheckResultPage({ params }: { params: Promise<{ address:
                 {/* Token info */}
                 <div className="flex-1 text-center md:text-left">
                   <h1 className="text-3xl font-bold mb-1" style={{ color: '#00ffff' }}>{sim.ticker}</h1>
-                  <p className="text-sm mb-1" style={{ color: '#888' }}>{sim.name} &middot; {sim.chain}</p>
-                  <p className="text-xs" style={{ color: '#555' }}>
-                    Contract: {decodedAddress.slice(0, 16)}...{decodedAddress.slice(-8)}
-                  </p>
+                  <p className="text-sm mb-2" style={{ color: '#888' }}>{sim.name} · {sim.chain}</p>
+                  <ContractAddress address={decodedAddress} chain={sim.chain} />
                   <div className="flex gap-3 mt-3 justify-center md:justify-start flex-wrap">
                     <span className="text-xs px-3 py-1 rounded-full font-bold"
                       style={{ background: 'rgba(0,255,255,0.1)', border: '1px solid rgba(0,255,255,0.3)', color: '#00ffff' }}>
