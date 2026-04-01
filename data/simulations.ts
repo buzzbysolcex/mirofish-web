@@ -28,15 +28,25 @@ export interface SimulationResult {
   simulatedAt: string;
 }
 
-// Batch simulation results — Day 33 (Mar 20, 2026)
-// 25 tokens simulated via MiroFish 20-Agent Engine
-// LLM: MiniMax M2.7 + bankr/gpt-5-nano (FREE)
+// MiroFish v2 — 1000-agent swarm simulation results
+// Updated: April 1, 2026 | Post-Sprint Day 2
+// Engine: 200 LLM (Ollama qwen3:8b) + 800 heuristic agents
+// 5 clusters × 200 agents × 20 rounds | Dual-Brain: 90% Opus / 10% Ollama
+// Dual-chain proof: Base mainnet + Solana mainnet
 
 function bullishCluster(b = 5, n = 0, bear = 0): ClusterData {
   return { bullish: b, neutral: n, bearish: bear, sentiment: b > bear + n ? "BULLISH" : bear > b ? "BEARISH" : "MIXED" };
 }
 
 export const simulations: Record<string, SimulationResult> = {
+  NASDOG: {
+    ticker: "NASDOG", name: "Nasdog", chain: "SOL", address: "FgYQD9x43QTdnJDvyztKJzzqHQjsaVMpmP2URsbPpump", score: 62, verdict: "WATCH",
+    probability: 0.669, confidence: 0.669, ev: 566, decision: "MONITOR", agentsCount: 1000,
+    clusters: { degen: bullishCluster(192,8,0), whale: bullishCluster(123,77,0), institutional: bullishCluster(88,112,0), community: bullishCluster(138,62,0) },
+    risks: "Institutional cluster held below 50% for all 20 rounds — smart money unconvinced. Liquidity $80K marginal for exchange listing.",
+    signals: "1000 agents, 20 rounds, 3933 Ollama calls, 8.17h, $0 cost. Degen 95.8%, Whale 61.4%, Institutional 44.0%, Community 69.1%, Market 64.2%. Emergent behavior: institutional resisted peer pressure at scale.",
+    simulatedAt: "2026-03-31T10:04:57Z",
+  },
   PIPPIN2: {
     ticker: "PIPPIN2", name: "Pippin v2", chain: "SOL", address: "8WwcNqdZjCY5Pt7AkhupAFknV2txca9sq6YBkGzLbvdt", score: 85, verdict: "HOT",
     probability: 1.0, confidence: 1.0, ev: 1000, decision: "LIST", agentsCount: 20,

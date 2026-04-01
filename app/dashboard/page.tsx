@@ -4,8 +4,8 @@ import Navbar from "@/components/Navbar";
 // ContractAddress used in client components (check page)
 
 export const metadata = {
-  title: "MicroBuzz — Pipeline Dashboard",
-  description: "Batch simulation results — 25 tokens analyzed by 20 AI agents",
+  title: "MiroFish — 1000-Agent Swarm Dashboard",
+  description: "1000-agent swarm simulation results. Dual-chain scoring on Base + Solana. 363 tokens tracked.",
 };
 
 function getRecColor(decision: string) {
