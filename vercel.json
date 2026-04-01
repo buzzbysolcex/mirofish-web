@@ -1,3 +1,11 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    { "source": "/", "destination": "https://buzzbd.ai", "permanent": true },
+    { "source": "/dashboard", "destination": "https://buzzbd.ai", "permanent": true },
+    { "source": "/simulate", "destination": "https://buzzbd.ai", "permanent": true },
+    { "source": "/check", "destination": "https://buzzbd.ai", "permanent": true },
+    { "source": "/report/:path*", "destination": "https://buzzbd.ai", "permanent": true },
+    { "source": "/:path*", "destination": "https://buzzbd.ai", "permanent": true }
+  ]
 }
